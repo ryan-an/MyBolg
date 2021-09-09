@@ -1,2 +1,2 @@
 # MyBolg
-hexo 源代码
+hexo 博客源代码
