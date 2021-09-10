@@ -193,10 +193,19 @@ font:
 # 指定自定义 .js 文件路径，支持列表；路径是相对 source 目录，如 /js/custom.js 对应存放目录 source/js/custom.js
 # Specify the path of your custom js file, support list. The path is relative to the source directory, such as `/js/custom.js` corresponding to the directory `source/js/custom.js`
 custom_js:
+  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js
+  - //cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js  # 鼠标点击爱心
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js # 大雪花飘落
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
 custom_css:
+  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css   # 打字机颜色
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css   # 滚动条颜色
 
 # 自定义 <head> 节点中的 HTML 内容
 # Customize <head> HTML content
@@ -628,7 +637,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis
-    type: valine
+    type: twikoo
 
 
 #---------------------------
@@ -756,9 +765,9 @@ remark42:
 # Based on Tencent CloudBase
 # See: https://twikoo.js.org
 twikoo:
-  envId:
-  region: ap-shanghai
-  path: window.location.pathname
+  envId: twikoo-2g2fquah8934e354
+  region: ap-guangzhou
+  # path: window.location.pathname
 
 # Cusdis
 # 基于第三方服务或自托管服务
