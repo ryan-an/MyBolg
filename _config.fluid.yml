@@ -394,7 +394,7 @@ footer:
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
   beian:
-    enable: false
+    enable: true
     # ICP证号
     icp_text: 京ICP证123456号
     # 公安备案号，不填则只显示ICP
@@ -628,7 +628,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis
-    type: disqus
+    type: valine
 
 
 #---------------------------
@@ -662,7 +662,6 @@ disqus:
   # See: https://github.com/SukkaW/DisqusJS
   disqusjs: false
   apikey:
-
 # Gitalk
 # 基于 GitHub Issues
 # Based on GitHub Issues
@@ -690,11 +689,11 @@ gitalk:
 # Based on LeanCloud
 # See: https://valine.js.org/
 valine:
-  appId:
-  appKey:
+  appId: JJrwBhLTUKY4sS1lzsd790Ld-gzGzoHsz
+  appKey: Fukx7Xup6V7YYNs6aDOd54Nn
   placeholder: 说点什么
   path: window.location.pathname
-  avatar: retro
+  avatar: robohash
   meta: ['nick', 'mail', 'link']
   pageSize: 10
   lang: zh-CN
