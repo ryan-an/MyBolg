@@ -195,16 +195,16 @@ font:
 custom_js:
   - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js
   - //cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js
-  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js
+  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js #头部上升气泡
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js  # 鼠标点击爱心
-  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js # 大雪花飘落
+  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js # 大雪花飘落
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
 custom_css:
   - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css
-  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css   # 打字机颜色
+  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css   # 打字机颜色
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css   # 滚动条颜色
 
 # 自定义 <head> 节点中的 HTML 内容
@@ -538,7 +538,7 @@ post:
     # 浏览量计数
     # Number of visits
     views:
-      enable: false
+      enable: ture
       # 统计数据来源
       # Data Source
       # Options: busuanzi | leancloud
@@ -548,7 +548,7 @@ post:
   # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
   # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
   updated:
-    enable: false
+    enable: true
 
     # 描述文字
     # Descriptive text before date
@@ -583,7 +583,7 @@ post:
   # 文章底部自定义区域（位于 footer 上方），支持 HTML，可插入赞赏码、公众号这类内容内容
   # Custom content at the bottom of the post page (located above the footer)
   custom:
-    enable: false
+    enable: true
     content: '<img src="https://octodex.github.com/images/jetpacktocat.png" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">'
 
   # 文章图片可点击放大
