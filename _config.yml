@@ -105,3 +105,32 @@ deploy:
   type: git
   repo: https://github.com/ryan-an/ryan-an.github.io.git
   branch: gh-pages
+
+# 添加二次元看板娘
+live2d:
+   enable: true
+   scriptFrom: local
+   pluginRootPath: live2dw/
+   pluginJsPath: lib/
+   pluginModelPath: assets/
+   tagMode: false
+   debug: false
+   model:
+       # hijiki shizuku z16 
+       use: live2d-widget-model-shizuku
+       scale: 1
+       hHeadPos: 0.5
+       vHeadPos: 0.618
+   display:
+       superSample: 2
+       width: 150
+       height: 300
+       position: left
+       hOffset: 0
+       vOffset: -20
+   mobile:
+       show: true
+       scale: 0.5
+   react:
+      opacityDefault: 0.7
+      opacityOnHover: 0.2
