@@ -102,7 +102,7 @@ fun_features:
     # Options: hover | always | touch
     visible: hover
     # Option：§ | # | ❡
-    icon: ""
+    icon: "§"
 
   # 加载进度条
   # Progress bar when loading
@@ -199,6 +199,9 @@ custom_js:
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js  # 鼠标点击爱心
   # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js # 大雪花飘落
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js # 鼠标跟随小星星
+  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js # 运行时间
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js # 樱花飘落
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
@@ -312,12 +315,26 @@ navbar:
   # 导航栏菜单，可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
-    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill"}
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
-    - { key: "空间", link: "/space/", icon: "iconfont icon-exp-fill" }
-    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "生活空间", link: "/space/", icon: "iconfont icon-exp-fill", 
+        submenu: [
+          {key: "学习", link: "/", icon: "iconfont icon-books"},
+          {key: "说说", link: "/space/shuoshuo", icon: "iconfont icon-books"},
+          {key: "音乐", link: "/", icon: "iconfont icon-music"},
+          {key: "电影", link: "/space/", icon: "iconfont icon-youtube-fill"},
+          {key: "游戏", link: "/", icon: "iconfont icon-steam"},
+          {key: "相册", link: "/", icon: "iconfont icon-images"},
+        ] 
+      }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill",
+        submenu: [
+          {key: "关于本站", link: "/about/", icon: "iconfont icon-copyright"},
+          {key: "关于我", link: "/about_me/", icon: "iconfont icon-addrcard"},
+        ]
+      }
     - { key: "工具", link: "/utils/", icon: "iconfont icon-bug" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
