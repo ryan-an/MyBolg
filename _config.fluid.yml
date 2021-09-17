@@ -98,7 +98,7 @@ fun_features:
   anchorjs:
     enable: true
     element: h1,h2,h3,h4,h5,h6
-    placement: right
+    placement: left
     # Options: hover | always | touch
     visible: hover
     # Option：§ | # | ❡
@@ -321,12 +321,12 @@ navbar:
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "生活空间", link: "/space/", icon: "iconfont icon-exp-fill", 
         submenu: [
-          {key: "学习", link: "/", icon: "iconfont icon-books"},
-          {key: "说说", link: "/space/shuoshuo", icon: "iconfont icon-books"},
-          {key: "音乐", link: "/", icon: "iconfont icon-music"},
+          {key: "学习", link: "/space/study", icon: "iconfont icon-books"},
+          {key: "叨叨", link: "/space/shuoshuo", icon: "iconfont icon-comment"},
+          {key: "音乐", link: "/space/music", icon: "iconfont icon-music"},
           {key: "电影", link: "/space/", icon: "iconfont icon-youtube-fill"},
-          {key: "游戏", link: "/", icon: "iconfont icon-steam"},
-          {key: "相册", link: "/", icon: "iconfont icon-images"},
+          {key: "游戏", link: "/space/game", icon: "iconfont icon-steam"},
+          {key: "相册", link: "/space/album", icon: "iconfont icon-images"},
         ] 
       }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill",
@@ -424,7 +424,7 @@ footer:
   beian:
     enable: true
     # ICP证号
-    icp_text: 京ICP证123456号
+    icp_text: 湘ICP备2021014854号
     # 公安备案号，不填则只显示ICP
     police_text: 京公网安备12345678号
     # 公安备案的编号，用于URL跳转查询
@@ -900,7 +900,6 @@ page404:
   banner_img_height: 85
   banner_mask_alpha: 0.3
   subtitle: "Page not found"
-
 
 #---------------------------
 # 友链页
