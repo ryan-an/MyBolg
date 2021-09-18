@@ -6,7 +6,7 @@ tags:
 - 开发工具
 categories: 
 - ReactNative 
-comments: true
+comment: true
 ---
 
 >Reactotron是为React Native应用提供网络调试的工具，其功能与浏览器的F12一样

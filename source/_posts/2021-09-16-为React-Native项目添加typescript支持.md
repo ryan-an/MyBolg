@@ -5,7 +5,7 @@ tags:
 - ts
 categories: 
 - ReactNative 
-comments: true
+comment: true
 ---
 
 ### Ts和Js的区别

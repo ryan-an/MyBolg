@@ -332,7 +332,7 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill",
         submenu: [
           {key: "关于本站", link: "/about/", icon: "iconfont icon-copyright"},
-          {key: "关于我", link: "/about_me/", icon: "iconfont icon-addrcard"},
+          {key: "关于我", link: "/about/me/", icon: "iconfont icon-addrcard"},
         ]
       }
     - { key: "工具", link: "/utils/", icon: "iconfont icon-bug" }

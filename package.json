@@ -27,6 +27,6 @@
     "hexo-theme-landscape": "^0.0.3",
     "live2d-widget-model-hijiki": "^1.0.5",
     "live2d-widget-model-shizuku": "^1.0.5",
-    "live2d-widget-model-z16": "^1.0.5"
+    "live2d-widget-model-z16": "^1.0.5",
   }
 }

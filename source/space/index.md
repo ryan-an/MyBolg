@@ -42,6 +42,7 @@ comment: true
 }
 .list-box .title{
     margin-top:0.1rem;
+    padding-left:0.2rem;
 }
 .list-box:hover{
     box-shadow: 0 2px 5px 0 rgba(61,111,155,.1);
@@ -57,6 +58,7 @@ comment: true
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+    padding-left:0.2rem;
 }
 .list-box:hover{
     -webkit-transform:translateY(-6px);
@@ -87,7 +89,7 @@ comment: true
     <div class="line"></div>
     <div class="list">
         <a class="list-box" href="http://549.tv/">
-            <img src="http://image.5you.com/attachment/soft/2021/0602/095258_61297020.png" width="100%" height="70%">
+            <img src="https://img0.baidu.com/it/u=2503213554,2188006727&fm=253&fmt=auto&app=120&f=JPEG?w=610&h=300" width="100%" height="70%">
             <div class="title">影视森林</div>
             <div class="subtitle">全网各大影视站点，包括App、在线、海外....</div>
         </a>
@@ -97,12 +99,12 @@ comment: true
             <div class="subtitle">超清壁纸loveing....</div>
         </a>
         <a class="list-box">
-            <img src="/img/favicon.png" width="100%" height="70%">
+            <img src="/static/img/favicon.png" width="100%" height="70%">
             <div class="title">嚯嚯嚯嚯</div>
             <div class="subtitle">嚯嚯嚯嚯....</div>
         </a>
         <a class="list-box">
-            <img src="/img/favicon.png" width="100%" height="70%">
+            <img src="/static/img/favicon.png" width="100%" height="70%">
             <div class="title">哈哈哈哈</div>
             <div class="subtitle">哈哈哈哈....</div>
         </a>
@@ -111,7 +113,7 @@ comment: true
 <div style="margin-top:2rem">
     <h5>学会聆听</h5>
     <div class="line"></div>
-    <div class="list">
+    <div class="list"> 
         <a class="list-box" href="#1111">
             <img src="https://browser9.qhimg.com/bdm/1000_618_80/t0124fe3eebb423762c.jpg" width="100%" height="70%">
             <div class="title">快乐歌单</div>
