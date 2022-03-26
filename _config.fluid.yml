@@ -316,7 +316,9 @@ navbar:
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "空间", link: "/space/", icon: "iconfont icon-exp-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "工具", link: "/utils/", icon: "iconfont icon-bug" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
@@ -421,7 +423,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -493,7 +495,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -783,7 +785,7 @@ cusdis:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -795,7 +797,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -825,7 +827,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   subtitle:
@@ -843,7 +845,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -866,7 +868,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -877,7 +879,7 @@ page:
 #---------------------------
 page404:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 85
   banner_mask_alpha: 0.3
   subtitle: "Page not found"
@@ -889,7 +891,7 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/bg1.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
