@@ -3488,6 +3488,11 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
+skplayer@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/skplayer/-/skplayer-3.0.8.tgz#7482472b45e2cf837f6f846e9c72c9832b23d13a"
+  integrity sha512-GE3lYyiB7wX+gkEuLlhq/JfJ8Ba0HlJUI7Kp9Dlcbfbasrpq5ZWXX/6IUbqGd28Gzj/+Kt1c3dDbNam3cyhUbg==
+
 smart-buffer@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
