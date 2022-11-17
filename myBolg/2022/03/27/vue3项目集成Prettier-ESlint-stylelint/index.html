@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="北岸">
+  <meta name="keywords" content="">
+  
+  <title>vue3项目集成Prettier+ESlint+stylelint - 北岸的个人空间</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>北岸</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-exp-fill"></i>
+                生活空间
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/study">
+                    <i class="iconfont icon-books"></i>
+                    学习
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/shuoshuo">
+                    <i class="iconfont icon-comment"></i>
+                    叨叨
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/music">
+                    <i class="iconfont icon-music"></i>
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/">
+                    <i class="iconfont icon-youtube-fill"></i>
+                    电影
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/game">
+                    <i class="iconfont icon-steam"></i>
+                    游戏
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/space/album">
+                    <i class="iconfont icon-images"></i>
+                    相册
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/about/">
+                    <i class="iconfont icon-copyright"></i>
+                    关于本站
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/about/me/">
+                    <i class="iconfont icon-addrcard"></i>
+                    关于我
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/utils/">
+                <i class="iconfont icon-bug"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="vue3项目集成Prettier+ESlint+stylelint">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-27 00:34" pubdate>
+        2022年3月27日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      53
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue3项目集成Prettier+ESlint+stylelint</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年4月4日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="创建vue3项目"><a href="#创建vue3项目" class="headerlink" title="创建vue3项目"></a>创建vue3项目</h2><p>项目建立好之后的首件事我们应该是做好代码规范、格式的制定及约束，eslint、stylelint先集成到项目中去，以免后续的封装改动成本过大。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 输入创建命令</span><br><span class="hljs-attribute">yarn</span> create vite<span class="hljs-meta"> [项目名称]</span><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>在命令行选择vue项目框架<br>选择vue-ts</p>
+</blockquote>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vala">cd [项目名称]<br><span class="hljs-meta"># 下载项目依赖</span><br>yarn<br><span class="hljs-meta"># 启动</span><br>yarn dev<br></code></pre></td></tr></table></figure>
+<p>搭建成功</p>
+<h2 id="安装ESlint"><a href="#安装ESlint" class="headerlink" title="安装ESlint"></a>安装ESlint</h2><blockquote>
+<p>负责 js/ts 文件代码检查、修复，文档详见 官网</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp">yarn <span class="hljs-keyword">add</span> --dev eslint<br>yarn eslint --<span class="hljs-keyword">init</span> <span class="hljs-comment">// 初始化eslint配置文件</span><br></code></pre></td></tr></table></figure>
+<p>按照需求选择选择对应的选项</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs less">您想如何使用<span class="hljs-selector-tag">ESLint</span>?<br>? <span class="hljs-selector-tag">How</span> <span class="hljs-selector-tag">would</span> <span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">like</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">use</span> <span class="hljs-selector-tag">ESLint</span>?<br><span class="hljs-selector-tag">To</span> <span class="hljs-selector-tag">check</span> <span class="hljs-selector-tag">syntax</span>, <span class="hljs-selector-tag">find</span> <span class="hljs-selector-tag">problems</span>, <span class="hljs-selector-tag">and</span> <span class="hljs-selector-tag">enforce</span> <span class="hljs-selector-tag">code</span> <span class="hljs-selector-tag">style</span><br> <br>您的项目使用什么类型的模块?<br>? <span class="hljs-selector-tag">What</span> <span class="hljs-selector-tag">type</span> <span class="hljs-selector-tag">of</span> <span class="hljs-selector-tag">modules</span> <span class="hljs-selector-tag">does</span> <span class="hljs-selector-tag">your</span> <span class="hljs-selector-tag">project</span> <span class="hljs-selector-tag">use</span>?<br><span class="hljs-selector-tag">JavaScript</span> <span class="hljs-selector-tag">modules</span> (import/export)<br> <br>您的项目使用哪个框架?<br>? <span class="hljs-selector-tag">Which</span> <span class="hljs-selector-tag">framework</span> <span class="hljs-selector-tag">does</span> <span class="hljs-selector-tag">your</span> <span class="hljs-selector-tag">project</span> <span class="hljs-selector-tag">use</span>?<br><span class="hljs-selector-tag">None</span> <span class="hljs-selector-tag">of</span> <span class="hljs-selector-tag">these</span><br> <br>你的代码在哪里运行?(按&lt;space&gt;选择，&lt;a&gt;切换所有，&lt;i&gt;反转选择)<br>? <span class="hljs-selector-tag">Where</span> <span class="hljs-selector-tag">does</span> <span class="hljs-selector-tag">your</span> <span class="hljs-selector-tag">code</span> <span class="hljs-selector-tag">run</span>? (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)<br><span class="hljs-selector-tag">Node</span><br> <br>您想如何为您的项目定义一个样式?<br>? <span class="hljs-selector-tag">How</span> <span class="hljs-selector-tag">would</span> <span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">like</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">define</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">style</span> <span class="hljs-selector-tag">for</span> <span class="hljs-selector-tag">your</span> <span class="hljs-selector-tag">project</span>?<br><span class="hljs-selector-tag">Use</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">popular</span> <span class="hljs-selector-tag">style</span> <span class="hljs-selector-tag">guide</span><br> <br>您想遵循哪种风格指南?<br>? <span class="hljs-selector-tag">Which</span> <span class="hljs-selector-tag">style</span> <span class="hljs-selector-tag">guide</span> <span class="hljs-selector-tag">do</span> <span class="hljs-selector-tag">you</span> <span class="hljs-selector-tag">want</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">follow</span>?<br><span class="hljs-selector-tag">Airbnb</span> (<span class="hljs-attribute">https</span>:<span class="hljs-comment">//github.com/airbnb/javascript)</span><br> <br>您希望配置文件的格式是什么?<br>? What format do you want your config file to be in?<br>JavaScript<br> <br>Checking peerDependencies of eslint-config-airbnb-base<span class="hljs-variable">@latest</span><br>您所选择的配置需要以下依赖项:<br>The config that you&#x27;ve selected requires the following <span class="hljs-attribute">dependencies</span>:<br>eslint-config-airbnb-base<span class="hljs-variable">@latest</span> eslint@^<span class="hljs-number">4.19</span>.<span class="hljs-number">1</span> || ^<span class="hljs-number">5.3</span>.<span class="hljs-number">0</span> eslint-plugin-import@^<span class="hljs-number">2.14</span>.<span class="hljs-number">0</span><br>您想现在用npm安装它们吗?<br>? Would you like to install them now with npm?<br>Yes<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装完成之后就可以手动执行yarn eslint lint命令对代码进行检查格式是否符合规范，同时可以加上–fix参数进行自动修复。<br>我们再加上vscode的插件可以实现实时编码时的格式检查/报错提示,以及保存代码时的自动格式修复。<br>在vscode插件仓库安装eslint插件。安装完之后我们编辑代码就会有对应的代码格式报错了，但还不能实现自动保存格式化代码。<br>需要在vscode的setting.json中配置如下</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"># 可以通过下面配置做一些禁用操作。<br>&#123;<br>  <span class="hljs-attr">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;source.fixAll&quot;</span>: <span class="hljs-literal">false</span>,  <span class="hljs-comment">//默认true保存的时候会执行所有的lint,可能会有时间消耗</span><br>    <span class="hljs-attr">&quot;source.fixAll.eslint&quot;</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// 仅仅支持eslint</span><br>  &#125;<br>&#125;<br># 也可以通过editor.codeActionsOnSaveTimeout可以配置一些自动保存时间，默认<span class="hljs-number">750</span>ms。<br></code></pre></td></tr></table></figure>
+<p>需要注意的是，需要关闭一些tslint的遗留配置，可能会影响到eslint，或者是vetur的格式化配置，假如没有遇到这些问题可以忽略。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-comment">// 关闭js/ts的默认format,统一用eslint进行格式化</span><br>  <span class="hljs-attr">&quot;javascript.format.enable&quot;</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">&quot;typescript.format.enable&quot;</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-comment">// 关闭vetur的js/ts/html的formatter。html用eslint-plugin-vue格式化。</span><br>  <span class="hljs-comment">// js/ts程序用eslint，防止vetur中的prettier与eslint格式化冲突</span><br>  <span class="hljs-attr">&quot;vetur.format.defaultFormatter.html&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br>  <span class="hljs-attr">&quot;vetur.format.defaultFormatter.js&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br>  <span class="hljs-attr">&quot;vetur.format.defaultFormatter.ts&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>配置之后vscode在<code>ctrl+s</code>保存时就能自动格式化代码了，无需再使用<code>ctrl+shift+f</code>手动格式化。<br>不过这样子的配置在多人合作开发中比较麻烦，不能保证项目组每个人都对vscode作了类似的配置以保证eslint的正常工作，<br>所以我们有一个方案，项目组都使用vscode时，在项目的根目录新建一个.vscode文件夹，里面放入<code>extensions.json</code> 、<code>launch.json</code> 和<code>settings.json</code> 三个文件.<br>还有其他的文件配置，可以查看<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/extension-marketplace">.vscode</a></p>
+<p>extensions.json配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;recommendations&quot;</span>: [<br>    <span class="hljs-string">&quot;johnsoncodehk.volar&quot;</span>,<br>    <span class="hljs-string">&quot;dbaeumer.vscode-eslint&quot;</span>,<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>launch.json：配置调试程序，主要用作debugger，具体配置可查看在 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html">VS Code 中调试 — Vue.js</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,<br>  <span class="hljs-attr">&quot;configurations&quot;</span>: [<br>    &#123;<br>      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;chrome&quot;</span>,<br>      <span class="hljs-attr">&quot;request&quot;</span>: <span class="hljs-string">&quot;launch&quot;</span>,<br>      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Launch Chrome&quot;</span>,<br>      <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,<br>      <span class="hljs-attr">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span>,<br>      <span class="hljs-attr">&quot;sourceMaps&quot;</span>: <span class="hljs-literal">true</span><br>    &#125;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>settings.json: 覆盖vscode全局配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;typescript.tsdk&quot;</span>: <span class="hljs-string">&quot;./node_modules/typescript/lib&quot;</span>,<br>  <span class="hljs-attr">&quot;npm.packageManager&quot;</span>: <span class="hljs-string">&quot;pnpm&quot;</span>,<br>  <span class="hljs-attr">&quot;editor.tabSize&quot;</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;source.fixAll.eslint&quot;</span>: <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>完成上面的配置之后，已较为完美的统一相关配置。</p>
+<h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><ul>
+<li>ESLint主要负责: 质量检查(例如使用了某个变量却忘记了定义)、风格检查</li>
+<li>Prettier主要负责: 风格检查, 没有质量检查<blockquote>
+<p><a target="_blank" rel="noopener" href="https://prettier.io/">prettier官网</a><br>需要注意一点，由于会出现引入多个风格检查的插件和配置的lint，会导致存在的部分与prettier的lint出现冲突。因此需要lint预设包<code>eslint-config-prettier</code>，<br>这个包的作用是先关闭这些与prettier冲突的lint规则，然后之后再启用prettier的规则，使得冲突的lint规则以prettier为准<br><code>eslint-config-prettier</code><a target="_blank" rel="noopener" href="https://github.com/prettier/eslint-config-prettier">配置文档</a><br>配置时，需要把p<code>rettier</code>和<code>plugin:prettier/recommended</code>放到<code>extends</code>的最后</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="配置ESlint"><a href="#配置ESlint" class="headerlink" title="配置ESlint"></a>配置ESlint</h2><p>eslint的规则我们可以参照官网文档定制适合自己团队的规则，也可以使用一些常见的开源规则标准，比如常见的像airbnb，standard这些，这些配置可以当做一个基础配置。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-config-standard">eslint-config-standard</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-config-google">eslint-config-google</a><br>关于上面的标准规则库可以单独下载配置，以airbnb为例<br><code>yarn add --dev eslint-config-airbnb</code><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">//.eslintrc.json</span><br>&#123;<br>  <span class="hljs-attr">&quot;extends&quot;</span>: [<span class="hljs-string">&quot;eslint:recommended&quot;</span>,<span class="hljs-string">&quot;airbnb&quot;</span>] <span class="hljs-comment">// eslint:recommended: 加入eslint默认配置。</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="忽略不需要校验的文件"><a href="#忽略不需要校验的文件" class="headerlink" title="忽略不需要校验的文件"></a>忽略不需要校验的文件</h3>在项目根目录创建一个.eslintignore文件来配置，这个类似于git的.gitignore文件，eslint校验时会忽略它们<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">public</span>/<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="让-Prettier-来管理代码"><a href="#让-Prettier-来管理代码" class="headerlink" title="让 Prettier 来管理代码"></a>让 Prettier 来管理代码</h2><p>安装prettier依赖<br><code>yarn add --dev prettier eslint-plugin-prettier eslint-config-prettier</code><br>在项目根目录新建<code>prettier.config.js</code>文件，总共22个配置<a target="_blank" rel="noopener" href="https://prettier.io/docs/en/options.html">Prettier配置参数说明</a><br>注意，配置文件是js格式时只能用<code>module.exports = &#123;&#125;</code>, 而不能用es6的<code>export default &#123;&#125;</code>。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// prettier.config.json</span><br>&#123;<br>  <span class="hljs-attr">&quot;singleQuote&quot;</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 使用单引号 </span><br>  <span class="hljs-attr">&quot;tabWidth&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// 一个 tab 键缩进相当于 2 个空格 </span><br>  <span class="hljs-attr">&quot;useTabs&quot;</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 行缩进使用 tab 键代替空格 </span><br>  <span class="hljs-attr">&quot;semi&quot;</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 语句的末尾加上分号 </span><br>  <span class="hljs-attr">&quot;trailingComma&quot;</span>: <span class="hljs-string">&quot;all&quot;</span>, <span class="hljs-comment">// 不用在多行的逗号分隔的句法结构的最后一行的末尾加上逗号 </span><br>  <span class="hljs-attr">&quot;printWidth&quot;</span>: <span class="hljs-number">120</span>, <span class="hljs-comment">// 单行代码超出 120 个字符自动换行 </span><br>  ...<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>可以通过<code>npx prettier --write .</code>来格式化代码</p>
+<p>添加<code>.prettierignore</code>文件来忽略不需要检查的文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-regexp">/dist/</span>*<br>.local<br>.output.js<br><span class="hljs-regexp">/node_modules/</span>**<br>**<span class="hljs-comment">/*.svg</span><br><span class="hljs-comment">**/</span>*.sh<br><span class="hljs-regexp">/public/</span>*<br></code></pre></td></tr></table></figure>
+<h2 id="prettier配合eslint"><a href="#prettier配合eslint" class="headerlink" title="prettier配合eslint"></a>prettier配合eslint</h2><p><code>eslint-config-prettier</code> 的作用是使用 Prettier 默认推荐配置，并且关闭 eslint 自身的格式化功能，防止 Prettier 和 ESLint 的自动格式化的冲突，主要解决配置冲突的，解决冲突的思路就是通过将这个包提供的扩展放到 extends 最后面引入，依据 rules 生效的优先级，所以它会覆盖前面起冲突的规则</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-attr">parser</span>: <span class="hljs-string">&#x27;vue-eslint-parser&#x27;</span>,<br>  <span class="hljs-attr">parserOptions</span>: &#123;<br>    <span class="hljs-attr">parser</span>: <span class="hljs-string">&#x27;@typescript-eslint/parser&#x27;</span>, <br>    <span class="hljs-attr">sourceType</span>: <span class="hljs-string">&#x27;module&#x27;</span>,<br>  &#125;,<br>  <span class="hljs-attr">extends</span>: [<br>    <span class="hljs-string">&#x27;plugin:vue/vue3-recommended&#x27;</span>, <span class="hljs-comment">// vue3 基础配置</span><br>    <span class="hljs-string">&#x27;airbnb&#x27;</span> <span class="hljs-comment">// 可以加入airbnb的规则</span><br>    <span class="hljs-string">&#x27;plugin:@typescript-eslint/recommended&#x27;</span>, <span class="hljs-comment">// ts配置</span><br>    <span class="hljs-string">&#x27;prettier&#x27;</span>, <span class="hljs-comment">// prettier</span><br>    <span class="hljs-string">&#x27;plugin:prettier/recommended&#x27;</span>, <span class="hljs-comment">// 合并eslint-plugin-prettier和eslint-config-prettier 配置</span><br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>最后设置vscode的保存自动格式化功能，在vscode插件市场安装<code>prettier eslint</code>插件就可以了</p>
+<blockquote>
+<p>若不能自动格式化，vscode的控制台 output输出一栏有eslint服务的日志，可在这里调试查看报错原因。一般出现一些依赖包缺失或者配置文件格式问题。</p>
+</blockquote>
+<h2 id="配置StyleLint"><a href="#配置StyleLint" class="headerlink" title="配置StyleLint"></a>配置StyleLint</h2><p><a target="_blank" rel="noopener" href="https://stylelint.io/">StyleLint</a>是针对于类css文件的静态检查和格式化，避免样式文件的错误及代码风格。<br>安装配置<br><code>yarn add --dev stylelint stylelint-config-recommended stylelint-order</code><br>我这里使用了scss，安装scss依赖<code>yarn add --dev sass sass-loader stylelint-config-standard-scss</code><br>这里用到的插件有</p>
+<ol>
+<li><code>stylelint</code></li>
+<li><code>stylelint-config-standard</code>: stylelint官方共享的标准规则集成。里面包括了 <a target="_blank" rel="noopener" href="https://github.com/necolas/idiomatic-css">Google’s CSS Style Guide</a>、<a target="_blank" rel="noopener" href="https://github.com/airbnb/css">Airbnb’s Styleguide</a>、<a target="_blank" rel="noopener" href="https://github.com/necolas/idiomatic-css">The Idiomatic CSS Principles</a>以及<a target="_blank" rel="noopener" href="https://codeguide.co/">@mdo’s Code Guide</a>标准规则库。</li>
+<li><code>stylelint-order</code>：用于规范样式属性写作顺序的插件.</li>
+<li><code>stylelint-config-prettier</code> : 禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
+</ol>
+<p>在跟目录创建<code>.stylelintrc.json</code>配置文件,添加配置如下所示</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;root&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;stylelint-order&quot;</span>],<br>  <span class="hljs-attr">&quot;extends&quot;</span>: [<span class="hljs-string">&quot;stylelint-config-standard&quot;</span>, <span class="hljs-string">&quot;stylelint-config-prettier&quot;</span>],<br>  <span class="hljs-attr">&quot;rules&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;selector-class-pattern&quot;</span>: <span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">&quot;selector-pseudo-class-no-unknown&quot;</span>: [<br>      <span class="hljs-literal">true</span>,<br>      &#123;<br>        <span class="hljs-attr">&quot;ignorePseudoClasses&quot;</span>: [<span class="hljs-string">&quot;global&quot;</span>],<br>      &#125;,<br>    ],<br>    <span class="hljs-attr">&quot;selector-pseudo-element-no-unknown&quot;</span>: [<br>      <span class="hljs-literal">true</span>,<br>      &#123;<br>        <span class="hljs-attr">&quot;ignorePseudoElements&quot;</span>: [<span class="hljs-string">&quot;v-deep&quot;</span>],<br>      &#125;,<br>    ],<br>    <span class="hljs-attr">&quot;at-rule-no-unknown&quot;</span>: [<span class="hljs-comment">// 由于自己大量的样式都是用sass语言编写，里面用到的部分语法例如@extend会报错，因为不是css中的语法。</span><br>      <span class="hljs-literal">true</span>,<br>      &#123;<br>        <span class="hljs-attr">&quot;ignoreAtRules&quot;</span>: [<br>          <span class="hljs-string">&quot;apply&quot;</span>,<br>          <span class="hljs-string">&quot;variants&quot;</span>,<br>          <span class="hljs-string">&quot;responsive&quot;</span>,<br>          <span class="hljs-string">&quot;screen&quot;</span>,<br>          <span class="hljs-string">&quot;function&quot;</span>,<br>          <span class="hljs-string">&quot;if&quot;</span>,<br>          <span class="hljs-string">&quot;each&quot;</span>,<br>          <span class="hljs-string">&quot;include&quot;</span>,<br>          <span class="hljs-string">&quot;mixin&quot;</span>,<br>        ],<br>      &#125;,<br>    ],<br>  &#125;,<br><br>  <span class="hljs-attr">&quot;ignoreFiles&quot;</span>: [<span class="hljs-string">&quot;**/*.js&quot;</span>, <span class="hljs-string">&quot;**/*.jsx&quot;</span>, <span class="hljs-string">&quot;**/*.tsx&quot;</span>, <span class="hljs-string">&quot;**/*.ts&quot;</span>],<br>  <span class="hljs-attr">&quot;overrides&quot;</span>: [ <span class="hljs-comment">// 特殊文件的配置</span><br>    &#123;<br>      <span class="hljs-attr">&quot;files&quot;</span>: [<span class="hljs-string">&quot;*.vue&quot;</span>, <span class="hljs-string">&quot;**/*.vue&quot;</span>, <span class="hljs-string">&quot;*.html&quot;</span>, <span class="hljs-string">&quot;**/*.html&quot;</span>],<br>      <span class="hljs-attr">&quot;extends&quot;</span>: [<span class="hljs-string">&quot;stylelint-config-recommended&quot;</span>, <span class="hljs-string">&quot;stylelint-config-html&quot;</span>],<br>      <span class="hljs-attr">&quot;rules&quot;</span>: &#123;<br>        <span class="hljs-attr">&quot;keyframes-name-pattern&quot;</span>: <span class="hljs-literal">null</span>,<br>        <span class="hljs-attr">&quot;selector-pseudo-class-no-unknown&quot;</span>: [ <span class="hljs-comment">// 解决vue提供的 v-deep v-global语法的报错</span><br>          <span class="hljs-literal">true</span>,<br>          &#123;<br>            <span class="hljs-attr">&quot;ignorePseudoClasses&quot;</span>: [<span class="hljs-string">&quot;deep&quot;</span>, <span class="hljs-string">&quot;global&quot;</span>],<br>          &#125;,<br>        ],<br>        <span class="hljs-attr">&quot;selector-pseudo-element-no-unknown&quot;</span>: [<br>          <span class="hljs-literal">true</span>,<br>          &#123;<br>            <span class="hljs-attr">&quot;ignorePseudoElements&quot;</span>: [<span class="hljs-string">&quot;v-deep&quot;</span>, <span class="hljs-string">&quot;v-global&quot;</span>, <span class="hljs-string">&quot;v-slotted&quot;</span>],<br>          &#125;,<br>        ],<br>      &#125;,<br>    &#125;,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>安装vscode的stylelint插件<br>安装官方提供的<code>stylelint</code>插件，和<code>stylelint-stzhang</code>插件，此插件用来解决自动保存功能的还有错误提示。<br><code>yarn add --dev stylelint-config-standard</code><br>stylelint插件我安装0.87.6版本，最新版不会根据配置文件提示报错。<br>vscode的settings.json文件中配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;stylelint.enable&quot;</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 默认 true</span><br>  <span class="hljs-attr">&quot;stylelint.autoFix&quot;</span>: <span class="hljs-literal">true</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>完成以上安装配置就能够自动修复代码了。</p>
+<!-- >注意：安装的 stylelint 和 VSCode Stylelint 插件版本太新，stylelint v14 及以上版本不兼容 vue3。所以可能会出现配置之后不能格式化的问题，还有可能出现类似Unknown word (CssSyntaxError)Stylelint(CssSyntaxError) 这样的报错，这些问题都是因为14版本太新导致的，具体原因官网有说明：[github.com/stylelint/s…](https://github.com/stylelint/stylelint/blob/14.0.0/docs/migration-guide/to-14.md#syntax-option-and-automatic-inferral-of-syntax)
+这里我使用`"stylelint": "^13.13.1"`版本, -->
+
+
+<p>一个编辑器里对某个类型的文件有多个Formatter（格式化执行者），是一定会打架的。所以需要一些配置。<br>Save时格式化：下面的json型设置需要写到setting.json里,详情可看<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations">Visual Studio Code User and Workspace Settings</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// 保存时使用VSCode 自身格式化程序格式化，触发自动保存机制。</span><br><span class="hljs-string">&quot;editor.formatOnSave&quot;</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// *重要</span><br><br><span class="hljs-comment">// 开启eslint格式化</span><br><span class="hljs-string">&quot;eslint.format.enable&quot;</span>: <span class="hljs-literal">true</span>,<br><br><span class="hljs-comment">// 显示eslint状态</span><br><span class="hljs-string">&quot;eslint.alwaysShowStatus&quot;</span>: <span class="hljs-literal">true</span>,<br><br><span class="hljs-comment">// 默认格式化走prettier</span><br><span class="hljs-string">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span>, <span class="hljs-comment">// *重要</span><br><br><span class="hljs-comment">// 开启stylelint校验</span><br><span class="hljs-string">&quot;stylelint.enable&quot;</span>: <span class="hljs-literal">true</span>,<br><br><span class="hljs-comment">// 自动保存触发stylelint</span><br><span class="hljs-string">&quot;stylelint.autoFix&quot;</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// *重要</span><br><br><span class="hljs-comment">// 各种文件格式化规则</span><br><span class="hljs-string">&quot;[javascriptreact]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[typescript]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[typescriptreact]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[html]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[css]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[less]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[scss]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;[markdown]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>&#125;,<br><br><span class="hljs-string">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;source.fixAll.eslint&quot;</span>: <span class="hljs-literal">true</span><br>&#125;,<br><span class="hljs-string">&quot;[vue]&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;source.fixAll.eslint&quot;</span>: <span class="hljs-literal">false</span><br>  &#125;<br>&#125;,<br><br><span class="hljs-comment">// 两者会在格式化js时冲突，所以需要关闭默认js格式化程序 </span><br><span class="hljs-string">&quot;javascript.format.enable&quot;</span>: <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<p>另外vscode需要安装<code>Prettier-Code formatter</code> 插件，否则<code>esbenp.prettier-vscode</code>配置会报找不到插件的错误，导致配置不生效</p>
+<h2 id="vscode-的格式化程序和插件"><a href="#vscode-的格式化程序和插件" class="headerlink" title="vscode 的格式化程序和插件"></a>vscode 的格式化程序和插件</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// 代表默认格式js程序是否开启，默认开启。用eslint格式化js时需要设置为false</span><br><span class="hljs-string">&quot;javascript.format.enable&quot;</span>: <span class="hljs-literal">true</span> <br></code></pre></td></tr></table></figure>
+<h3 id="Vetur"><a href="#Vetur" class="headerlink" title="Vetur"></a>Vetur</h3><p>用于在 vue 单文件中展示不同语言，有<code>格式化</code>、<code>展示</code>、<code>高亮</code>等能力，安装即默认开启格式化，<code>vetur</code> 还内置了<code>prettier</code>和 <code>eslint</code> 的能力。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// 关闭vetur格式化程序 ，防止和eslint冲突</span><br><span class="hljs-string">&quot;vetur.format.defaultFormatter.js&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br><span class="hljs-string">&quot;vetur.format.defaultFormatter.html&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br><span class="hljs-string">&quot;vetur.format.defaultFormatter.ts&quot;</span>: <span class="hljs-string">&quot;none&quot;</span>,<br><span class="hljs-string">&quot;vetur.validation.script&quot;</span>: <span class="hljs-literal">false</span>,<br><span class="hljs-string">&quot;vetur.validation.template&quot;</span>: <span class="hljs-literal">false</span>,<br></code></pre></td></tr></table></figure>
+<h3 id="Volar"><a href="#Volar" class="headerlink" title="Volar"></a>Volar</h3><p>vue的二代插件,支持vue3，除了集成了vetur的相关功能，如<code>高亮</code>、<code>语法提示</code>等。当然还很多其他强大的功能，可以参考官方文档。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// 关闭volar格式化程序 ,加载过慢。</span><br><span class="hljs-string">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;source.fixAll.volar&quot;</span>: <span class="hljs-literal">false</span><br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<p>项目可以<code>package.json</code>添加命令用于stylelint的全局格式检查和修复</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-string">&quot;stylelint&quot;</span>: <span class="hljs-string">&quot;stylelint \&quot;src/**/*.&#123;css,scss,vue&#125;\&quot;&quot;</span>,<br><span class="hljs-string">&quot;stylefix&quot;</span>: <span class="hljs-string">&quot;stylelint \&quot;src/**/*.&#123;css,scss,vue&#125;\&quot; --fix&quot;</span>,<br></code></pre></td></tr></table></figure>
+<p>执行yarn stylelint 报错，需要安装解析scss相关依赖<br><code>yarn add --dev stylelint-config-html postcss-html postcss-scss</code></p>
+<h2 id="加入pre-commit钩子校验代码"><a href="#加入pre-commit钩子校验代码" class="headerlink" title="加入pre-commit钩子校验代码"></a>加入pre-commit钩子校验代码</h2><p>以上设置了eslint自动修复代码错误以及prettier进行代码格式化，但在开发中难免遇到无法fix的错误代码，可能开发人员忘记修改，那这个时候把代码提交到远程仓库，那将是糟糕的代码。为解决这个问题，我们可以通过git hooks的pre-commit钩子来实现，主要的工具是husky和lint-staged这个两个包。</p>
+<blockquote>
+<p>husky 是一个为 git 客户端增加 hook 的工具。安装后，它会自动在仓库中的 .git/ 目录下增加相应的钩子；比如 pre-commit 钩子就会在你执行 git commit 的触发。<br>lint-staged，一个仅仅过滤出 Git 代码暂存区文件(被 git add 的文件)的工具；这个很实用，因为我们如果对整个项目的代码做一个检查，可能耗时很长，如果是老项目，要对之前的代码做一个代码规范检查并修改的话，特别消耗时间，所以lint-staged对开发者来说比较友好。</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>yarn add --dev husky lint-staged</code></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>lint-staged的配置可以配置到package.json中也可以根目录创建配置文件.lintstagedrc</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// lintstagedrc.json</span><br>&#123;<br>    <span class="hljs-attr">&quot;*.&#123;js,jsx,ts,tsx&#125;&quot;</span>: [<br>      <span class="hljs-string">&quot;eslint --fix&quot;</span>,<br>      <span class="hljs-string">&quot;prettier --write&quot;</span><br>    ],<br>    <span class="hljs-attr">&quot;&#123;!(package)*.json,*.code-snippets,.!(browserslist)*rc&#125;&quot;</span>: [<br>      <span class="hljs-string">&quot;prettier --write--parser json&quot;</span><br>    ],<br>    <span class="hljs-attr">&quot;package.json&quot;</span>: [<br>      <span class="hljs-string">&quot;prettier --write&quot;</span><br>    ],<br>    <span class="hljs-attr">&quot;*.vue&quot;</span>: [<br>      <span class="hljs-string">&quot;eslint --fix&quot;</span>,<br>      <span class="hljs-string">&quot;prettier --write&quot;</span>,<br>      <span class="hljs-string">&quot;stylelint --fix&quot;</span><br>    ],<br>    <span class="hljs-attr">&quot;*.&#123;scss,less,styl,html&#125;&quot;</span>: [<br>      <span class="hljs-string">&quot;stylelint --fix&quot;</span>,<br>      <span class="hljs-string">&quot;prettier --write&quot;</span><br>    ],<br>    <span class="hljs-attr">&quot;*.md&quot;</span>: [<br>      <span class="hljs-string">&quot;prettier --write&quot;</span><br>    ]<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-comment">// package.json</span><br><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>  <span class="hljs-attr">&quot;lint&quot;</span>: <span class="hljs-string">&quot;lint-staged&quot;</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="初始化husky"><a href="#初始化husky" class="headerlink" title="初始化husky"></a>初始化husky</h4><p>执行下列命令会在.husky下创建一个pre-commit文件</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">yarn husky install <span class="hljs-meta"># 创建.husky文件</span><br>yarn husky <span class="hljs-keyword">add</span> .husky/pre-commit<br></code></pre></td></tr></table></figure>
+<p>接下来在生成的.husky文件夹下的pre-commit 文件写入comiit之前的需要执行的校验代码格式的命令即可实现，校验不成功则不会执行commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># pre-commit</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;---代码格式检查开始---&quot;</span><br>yarn lint<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;---检查结束---&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>至此大功告成</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>创建vue3+ts项目，使用prettier集成eslint代码检查、stylelint样式格式化，prettier作为中间件控制eslint和stylelint的格式标准，并已此标准检查报错和格式化代码。<br>关闭了vscode本身的代码格式化和Volar的格式化，使用各插件处理解决几种格式化工具之间的冲突。<br>使用husky和lint-staged检查并格式化git暂存区的代码。<br>避免团队成员提交不符合团队规范标准的代码到远程仓库，至此完成了多人合作的项目的代码规范标准化，极大的方便了后续代码维护修改，提高了项目代码的易读性，同时严格规范代码避免垃圾代码侧面的提升了代码性能。</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/27/%E4%BD%BF%E7%94%A8vite%E6%90%AD%E5%BB%BAvue3%E9%A1%B9%E7%9B%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用vite搭建vue3项目</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/16/%E4%B8%BAReact-Native%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0typescript%E6%94%AF%E6%8C%81/">
+                        <span class="hidden-mobile">为ReactNative项目添加typescript支持</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-2g2fquah8934e354","region":"ap-guangzhou","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname'
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        湘ICP备2021014854号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
