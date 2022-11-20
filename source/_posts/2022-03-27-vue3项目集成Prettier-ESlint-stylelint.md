@@ -2,6 +2,12 @@
 title: vue3项目集成Prettier+ESlint+stylelint
 date: 2022-03-27 00:34:32
 tags:
+- vue3
+- eslint
+- prettier
+categories: 
+- vue3
+---
 ---
 
 ## 创建vue3项目
