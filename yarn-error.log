@@ -1,47 +1,21 @@
 Arguments: 
-<<<<<<< HEAD
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js
+  D:\apps\nodejs\node.exe D:\apps\nodejs\node_modules\yarn\bin\yarn.js
 
 PATH: 
-  C:\Program Files (x86)\NetSarang\Xftp 6\;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Git\cmd;D:\apache-tomcat-9.0.39\php;D:\apache\Apache24\bin;C:\Users\admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\dart-sdk-windows-x64\dart-sdk\bin;D:\flutter_windows_1.22.4-stable\flutter\bin;C:\Users\admin\AppData\Local\Android\Sdk\platform-tools;C:\Users\admin\AppData\Local\Android\Sdk\emulator;C:\Users\admin\AppData\Local\Android\Sdk\tools;C:\Users\admin\AppData\Local\Android\Sdk\tools\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files\wkhtmltopdf\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\admin\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\admin\AppData\Local\Programs\Python\Python36\;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\AppData\Roaming\npm;C:\Users\admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\admin\AppData\Local\GitHubDesktop\bin;C:\Users\admin\AppData\Roaming\nvm;C:\Program Files\nodejs
+  C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\apps\nvm;D:\apps\nodejs;D:\apps\Bandizip\;C:\Program Files\Tailscale\;C:\Program Files\Git\cmd;D:\apps\Microsoft VS Code\bin;D:\apps\SVN\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\13236\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\13236\AppData\Local\Programs\Python\Python312\;C:\Users\13236\AppData\Local\Microsoft\WindowsApps;D:\apps\QQGame\Hall.57938\
 
 Yarn version: 
-  1.22.10
+  1.22.19
 
 Node version: 
-  14.15.0
-=======
-  D:\nodejs\node.exe C:\Users\root\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js serve
-
-PATH: 
-  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\bin;D:\Git\bin;D:\;D:\wkhtmltopdf\bin;D:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\root\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\root\AppData\Local\Programs\Python\Python36\;C:\Users\root\AppData\Local\Microsoft\WindowsApps;;D:\Microsoft VS Code\bin;C:\Users\root\AppData\Roaming\npm
-
-Yarn version: 
-  1.22.11
-
-Node version: 
-  16.14.0
->>>>>>> 961d3affe66378970b6d24b10c151dca179d1bb6
+  16.18.1
 
 Platform: 
   win32 x64
 
 Trace: 
-<<<<<<< HEAD
-  SyntaxError: D:\Projects\WebProject\MyBolg\package.json: Unexpected token } in JSON at position 867
-      at JSON.parse (<anonymous>)
-      at C:\Users\admin\AppData\Roaming\nvm\v14.15.0\node_modules\yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\admin\AppData\Roaming\nvm\v14.15.0\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\admin\AppData\Roaming\nvm\v14.15.0\node_modules\yarn\lib\cli.js:321:13
-=======
-  SyntaxError: D:\Project\MyBolg\package.json: Unexpected token } in JSON at position 867
-      at JSON.parse (<anonymous>)
-      at C:\Users\root\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\root\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\root\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
->>>>>>> 961d3affe66378970b6d24b10c151dca179d1bb6
+  Error: connect ETIMEDOUT 104.16.3.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
 
 npm manifest: 
   {
@@ -73,7 +47,7 @@ npm manifest:
       "hexo-theme-landscape": "^0.0.3",
       "live2d-widget-model-hijiki": "^1.0.5",
       "live2d-widget-model-shizuku": "^1.0.5",
-      "live2d-widget-model-z16": "^1.0.5",
+      "live2d-widget-model-z16": "^1.0.5"
     }
   }
 
@@ -3570,11 +3544,6 @@ Lockfile:
     version "1.0.5"
     resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
     integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
-  
-  skplayer@^3.0.8:
-    version "3.0.8"
-    resolved "https://registry.yarnpkg.com/skplayer/-/skplayer-3.0.8.tgz#7482472b45e2cf837f6f846e9c72c9832b23d13a"
-    integrity sha512-GE3lYyiB7wX+gkEuLlhq/JfJ8Ba0HlJUI7Kp9Dlcbfbasrpq5ZWXX/6IUbqGd28Gzj/+Kt1c3dDbNam3cyhUbg==
   
   smart-buffer@^4.1.0:
     version "4.2.0"
